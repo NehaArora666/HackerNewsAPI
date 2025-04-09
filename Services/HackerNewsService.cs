@@ -26,7 +26,6 @@ public class HackerNewsService
         try
         {
             var topStoryIds = await FetchTopStoryIdsAsync();
-
             var stories = new List<StoryModel>();
             var tasks = topStoryIds.Select(id => FetchStoryDetailsAsync(id)).ToList();
             var fetchedStories = await Task.WhenAll(tasks);

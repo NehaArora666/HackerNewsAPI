@@ -19,16 +19,11 @@ namespace HackerNewsAPI.Controllers
             try
             {
                 var topStories = await _hackerNewsService.GetTopStoriesAsync();
-
-              
                 var paginatedStories = topStories
                     .Skip(page * pageSize) 
                     .Take(pageSize) 
                     .ToList();
-
-               
                 var totalCount = topStories.Count();
-
                 return Ok(new { items = paginatedStories, totalCount = totalCount });
             }
             catch (Exception ex)
