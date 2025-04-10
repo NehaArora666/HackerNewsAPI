@@ -1,8 +1,12 @@
+using HackerNewsAPI.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 
-builder.Services.AddHttpClient();
+
+builder.Services.AddHttpClient<IHackerNewsService, HackerNewsService>();
+builder.Services.AddScoped<ICachedHackerNewsService, CachedHackerNewsService>();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<HackerNewsService>();  
 builder.Services.AddCors(options =>

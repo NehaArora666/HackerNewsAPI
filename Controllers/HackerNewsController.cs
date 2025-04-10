@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HackerNewsAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HackerNewsAPI.Controllers
 {
@@ -6,9 +7,9 @@ namespace HackerNewsAPI.Controllers
     [ApiController]
     public class HackerNewsController : ControllerBase
     {
-        private readonly HackerNewsService _hackerNewsService;
+        private readonly ICachedHackerNewsService _hackerNewsService;
 
-        public HackerNewsController(HackerNewsService hackerNewsService)
+        public HackerNewsController(ICachedHackerNewsService hackerNewsService)
         {
             _hackerNewsService = hackerNewsService;
         }
